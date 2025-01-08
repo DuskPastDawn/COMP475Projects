@@ -11,7 +11,7 @@ A = temp.rstrip().split(',');
 
 #Converts string entries to int
 for i in range(len(A)):
-	A[i] = int(A[i]);
+    A[i] = int(A[i]);
 #Labeling is stored in list A
 #==============================================
 # Your code goes here
