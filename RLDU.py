@@ -19,7 +19,7 @@ def is_wandering(path, start=0, end=None, visited=None, position=(0, 0)):
         visited.add((0, 0))
         end = len(path) - 1
 
-    if start == end:  # Base case: single move
+    if start == end:  # Base case: processing a single move (L, R, U, or D)
         x, y = position
         if path[start] == 'L':
             x -= 1
@@ -32,17 +32,19 @@ def is_wandering(path, start=0, end=None, visited=None, position=(0, 0)):
         
         # Check if the position is revisited
         if (x, y) in visited:
-            return False
-        visited.add((x, y))
+            return False # Not wandering (revisited position)
+
+        # if the position hasn't been revisited, store the position and return true
+        visited.add((x, y)) 
         return True
 
     # Divide: Split the path into two halves
     mid = start + (end - start) // 2
 
-    # Process the left half
+    # Process the left half recursively (starts at the beginning of the array to middle)
     left_result = is_wandering(path, start, mid, visited, position)
     if not left_result:
-        return False
+        return False # if at any point a path is revisited, return false
 
     # Compute the position at the end of the left half
     x, y = position
@@ -56,7 +58,7 @@ def is_wandering(path, start=0, end=None, visited=None, position=(0, 0)):
         elif path[i] == 'D':
             y -= 1
 
-    # Process the right half
+    # Process the right half (starts at mid + 1, ends at right half of array)
     return is_wandering(path, mid + 1, end, visited, (x, y))
 
 if is_wandering(A):
