@@ -12,9 +12,9 @@ def get_triangular_numbers(n):
 
 #Finds the minimum number of terms needed to sum to n using given numbers
 def decompose_number(n, numbers):
-    # initialize dp array with inf nums
+    # initialize dp array with inf nums (stores the minimum number to form i
     dp = [float('inf')] * (n + 1)
-    # initialize prev array with zeros
+    # initialize prev array with zeros (stores the the last number to reach i)
     prev = [0] * (n + 1)
     # base case
     dp[0] = 0
@@ -28,7 +28,7 @@ def decompose_number(n, numbers):
 
     result = []
     current = n
-    while current > 0:
+    while current > 0:                                     # Reconstruct the decomposition
         result.append(prev[current])
         current -= prev[current]
 
