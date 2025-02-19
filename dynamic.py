@@ -12,7 +12,7 @@ def get_triangular_numbers(n):
 
 #Finds the minimum number of terms needed to sum to n using given numbers
 def decompose_number(n, numbers):
-    # initialize dp array with inf nums (stores the minimum number to form i
+    # initialize dp array with inf nums (stores the minimum number to form i)
     dp = [float('inf')] * (n + 1)
     # initialize prev array with zeros (stores the the last number to reach i)
     prev = [0] * (n + 1)
